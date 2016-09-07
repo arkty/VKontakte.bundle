@@ -406,7 +406,7 @@ def MusicList(uid, title, album_id=None, offset=0):
 @route(PREFIX_M + '/play')
 def MusicPlay(info):
     Log("%s: %s" % ("ORIG", info))
-    info1 = unquote(info)
+    info1 = unquote(info.replace('+%22','%22')
     Log("%s: %s" % ("ORIG1", info1))
     info2 = info1.decode('utf8')
     Log("%s: %s" % ("ORIG2", info2))
