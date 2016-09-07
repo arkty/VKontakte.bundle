@@ -405,8 +405,14 @@ def MusicList(uid, title, album_id=None, offset=0):
 
 @route(PREFIX_M + '/play')
 def MusicPlay(info):
-
-    item = JSON.ObjectFromString(unquote(info).decode('utf8'))
+    Log("%s: %s" % ("ORIG", info))
+    info1 = unquote(info)
+    Log("%s: %s" % ("ORIG1", info1))
+    info2 = info1.decode('utf8')
+    Log("%s: %s" % ("ORIG2", info2))
+    info3 = unquote(info1).decode('utf8')
+    Log("%s: %s" % ("ORIG3", info3))
+    item = JSON.ObjectFromString(info3)
 
     if not item:
         raise Ex.MediaNotAvailable
