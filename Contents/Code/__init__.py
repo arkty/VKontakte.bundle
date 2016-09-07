@@ -26,6 +26,7 @@
 # SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 from urllib import urlencode
+from urllib import unquote
 from updater import Updater
 
 PREFIX_V = '/video/vkontakte'
@@ -405,7 +406,7 @@ def MusicList(uid, title, album_id=None, offset=0):
 @route(PREFIX_M + '/play')
 def MusicPlay(info):
 
-    item = JSON.ObjectFromString(info)
+    item = JSON.ObjectFromString(unquote(info).decode('utf8'))
 
     if not item:
         raise Ex.MediaNotAvailable
